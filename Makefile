@@ -1,4 +1,4 @@
-CROSS=/home/bruno/mipsel-unknown-linux-gnu/bin/mipsel-unknown-linux-gnu-
+CROSS=$(HOME)/mipsel-unknown-linux-gnu/bin/mipsel-unknown-linux-gnu-
 CC	= $(CROSS)gcc
 CXX	= $(CROSS)g++
 STRIP	= $(CROSS)strip
