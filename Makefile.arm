@@ -1,0 +1,26 @@
+CROSS=/home/bruno/smp86xx_toolchain.20080505/build_mipsel_nofpu/staging_dir/bin/mipsel-linux-
+CC=$(CROSS)gcc
+AS=$(CROSS)as
+LD=$(CROSS)ld
+CPP=$(CROSS)g++
+AR=$(CROSS)ar
+RANLIB=$(CROSS)ranlib
+STRIP=$(CROSS)strip
+NM=$(CROSS)nm
+OBJDUMP=$(CROSS)objdump
+CFLAGS	= -O2 -I.
+LFLAGS	= -lpthread
+#KERNELDIR= /snakeos-sdk/kernels/linux
+
+OBJECTS = tools.o convert.o debug.o sockets.o serial.o config.o threads.o sha1.o cccamcrypt.o cccamconn.o cccam-srv.o main.o 
+
+link : $(OBJECTS)
+	$(CC) $(LFLAGS) -o twin2cc $(OBJECTS)
+	$(STRIP) twin2cc
+
+.c.o:
+	$(CC) -c $(CFLAGS) $< -o $@
+
+clean:
+	-rm *.o
+	-rm twin2cc
